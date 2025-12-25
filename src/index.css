@@ -1,0 +1,38 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* Humane Font */
+@font-face {
+  font-family: "Humane";
+  src: url("/fonts/HUMANE/Web-PS/Humane-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+.font-humane {
+  font-family: "Humane", sans-serif;
+}
+
+/* DM Sans Font*/
+@font-face {
+    font-family: "DM Sans";
+    src: url("/Fonts/DM_Sans/static/DMSans-Regular.ttf");
+    font-weight: 400;
+    font-display: swap;
+}
+
+.font-sans{
+    font-family: "DM Sans", sans-serif;
+}
+
+/* Bebas_Neue Font*/
+@font-face {
+    font-family: "Bebas_neue";
+    src: url("/Fonts/Bebas_Neue/BebasNeue-Regular.ttf");
+    font-weight: 400;
+    font-display: swap;
+}
+
+.font-neue{
+    font-family: "Bebas_neue", sans-serif;
+}
