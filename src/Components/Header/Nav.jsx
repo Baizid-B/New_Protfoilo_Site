@@ -7,6 +7,7 @@ const Nav = () => {
         <NavLink className={({isActive}) => `m-2 ${isActive ? "text-[#D5FF3F]" : "text-white"}`} to='/About'>About</NavLink>
         <NavLink className={({isActive}) => `m-2 ${isActive ? "text-[#D5FF3F]" : "text-white"}`} to='/Project'>Project</NavLink>
         <NavLink className={({isActive}) => `m-2 ${isActive ? "text-[#D5FF3F]" : "text-white"}`} to='/Contact'>Contact</NavLink>
+        <NavLink className={({isActive}) => `m-2 ${isActive ? "text-[#D5FF3F]" : "text-white"}`} to='/add_project'>Add Project</NavLink>
     </>
     
     return (
