@@ -28,6 +28,8 @@ const Add_project = () => {
       if(data.insertedId){
         alert("Project added successfully")
         e.target.reset()
+      }else{
+        alert("Failed to add project!")
       }
     })
 
