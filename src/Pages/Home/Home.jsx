@@ -5,10 +5,13 @@ import { FaArrowRight } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import contact_icon from "../../assets/Vector.svg"
-import { Link, Links } from "react-router";
+import { Link, useLoaderData } from "react-router";
+
 
 
 const Home = () => {
+  const projectData = useLoaderData()
+
   return (
     <>
         {/* Home_hero_section */}
@@ -169,73 +172,30 @@ const Home = () => {
                 </div>
 
                 {/* prject show card */}
-                <div className="grid grid-cols-3 gap-5">
+                <div>
 
-                    {/* First_Card */}
-                    <div className="bg-[#8B949E] p-5 rounded-2xl overflow-hidden">
-                        <img src="" alt="" />
+                   { 
+                       projectData && projectData.length > 0 ? (<div className="grid grid-cols-3 gap-5">{ projectData.map( users => (
+                                <div className="bg-[#8B949E] p-5 rounded-2xl overflow-hidden">
+                                <img src={users.image} alt="" />
 
-                        <h1>Heading</h1>
+                                <h1>{users.name}</h1>
 
-                        <p>
-                            Developed to showcase my skills
-                            in web development, my portfolio
-                            website exemplifies proficiency in
-                            technologies such as ReactJS, CSS, and Figma.
-                        </p>
+                                <p>{users.details}</p>
 
-                        {/* More Images */}
-                        <div>
-                            <img src="" alt="" />
-                            <img src="" alt="" />
-                            <img src="" alt="" />
-                            <img src="" alt="" />
-                        </div>
-                    </div>
-
-                    {/* Second_Card */}
-                    <div className="bg-[#8B949E] p-5 rounded-2xl overflow-hidden">
-                        <img src="" alt="" />
-
-                        <h1>Heading</h1>
-
-                        <p>
-                            Developed to showcase my skills
-                            in web development, my portfolio
-                            website exemplifies proficiency in
-                            technologies such as ReactJS, CSS, and Figma.
-                        </p>
-
-                        {/* More Images */}
-                        <div>
-                            <img src="" alt="" />
-                            <img src="" alt="" />
-                            <img src="" alt="" />
-                            <img src="" alt="" />
-                        </div>
-                    </div>
-
-                    {/* Third_Card */}
-                    <div className="bg-[#8B949E] p-5 rounded-2xl overflow-hidden">
-                        <img src="" alt="" />
-
-                        <h1>Heading</h1>
-
-                        <p>
-                            Developed to showcase my skills
-                            in web development, my portfolio
-                            website exemplifies proficiency in
-                            technologies such as ReactJS, CSS, and Figma.
-                        </p>
-
-                        {/* More Images */}
-                        <div>
-                            <img src="" alt="" />
-                            <img src="" alt="" />
-                            <img src="" alt="" />
-                            <img src="" alt="" />
-                        </div>
-                    </div>
+                                {/* More Images */}
+                                <div>
+                                    {
+                                        users?.multiple?.map(img => (
+                                            <img key={img._id} src={img} alt={img.name} />
+                                        ))
+                                    }
+                                </div>
+                            </div>
+                        ))} </div>) : (<p className="flex justify-center items-center p-5 text-xl font-semibold font-sans w-full">
+                            No data avabaliable
+                        </p>)
+                    }
 
                 </div>
             </div>

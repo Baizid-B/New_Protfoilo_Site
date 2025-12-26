@@ -15,8 +15,6 @@ const Add_project = () => {
 
     console.log("all data:", data);
 
-    e.target.reset()
-
     fetch("http://localhost:5000/project",{
       method:"POST",
       headers:{
@@ -27,6 +25,10 @@ const Add_project = () => {
     .then(res => res.json())
     .then(data =>{
       console.log(data);
+      if(data.insertedId){
+        alert("Project added successfully")
+        e.target.reset()
+      }
     })
 
   };

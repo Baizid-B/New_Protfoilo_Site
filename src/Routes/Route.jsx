@@ -6,6 +6,7 @@ import Error from "../Pages/Error/Error";
 import Contact from "../Pages/Contact/Contact";
 import Add_product from "../Pages/ADD_PRODUCT/Add_project";
 import Add_project from "../Pages/ADD_PRODUCT/Add_project";
+import Projects from "../Pages/Projects/Projects";
 
 export const router = createBrowserRouter([
   {
@@ -15,11 +16,17 @@ export const router = createBrowserRouter([
     children:[
       {
         path:"/",
-        element:<Home></Home>
+        element:<Home></Home>,
+        loader: () => fetch('http://localhost:5000/projects')
       },
       {
         path:"/about",
         element:<About></About>
+      },
+      {
+        path:'/Projects',
+        element:<Projects></Projects>,
+        loader: () => fetch('http://localhost:5000/projects')
       },
       {
         path:"/contact",
