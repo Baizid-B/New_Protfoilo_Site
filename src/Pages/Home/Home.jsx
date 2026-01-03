@@ -131,8 +131,8 @@ const Home = () => {
 
                 {/* icon */}
                 <div className="flex flex-row gap-3 mt-5">
-                    <div className="text-3xl text-[#D5FF3F]"><FaLinkedin /></div>
-                    <div className="text-3xl text-[#D5FF3F]"><FaGithub /></div>
+                    <Link to='https://www.linkedin.com/in/baizid-bostami-36962b292/' className="text-3xl text-[#D5FF3F] hover:text-white transition-all duration-300 ease-in-out"><FaLinkedin /></Link>
+                    <Link to='https://github.com/Baizid-B' className="text-3xl text-[#D5FF3F] hover:text-white transition-all duration-300 ease-in-out"><FaGithub /></Link>
                 </div>
             </div>
 
@@ -144,14 +144,7 @@ const Home = () => {
 
                 <h1 className="uppercase font-humane text-5xl text-center text-[#161B22]">about</h1>
                 <p className="text-[#161B22] capitalize font-sans">
-                    Hi there! I'm Rahul, a third-year Computer Science student
-                    at SRM Institute with a passion for crafting user-centric
-                    experiences. I specialize in UI/UX design, front-end development,
-                    and graphic design, with expertise in HTML, CSS, JavaScript, React,
-                    Node.js, Tailwind CSS, QML, and C++. I thrive on collaboration and
-                    bring experience in agile scrum methodologies. Beyond coding, I enjoy
-                    photography, graphic design, and exploring music. Let's connect and bring
-                    your digital visions to life
+                    I’m an aspiring front-end developer passionate about building responsive and user-friendly web interfaces. Although I don’t have professional experience yet, I’ve been actively learning and practicing key technologies, including HTML, CSS, JavaScript, Tailwind CSS, React.js, MongoDB, Express.js, Node.js, and lastly, Next.js.I enjoy turning design ideas into functional and visually appealing websites. Through personal projects, online tutorials,and hands-on practice, I’ve developed a good understanding of modern web development concepts such as component-based design, responsive layouts, and interactive UI behavior. I’m highly motivated to grow, learn from real-world challenges, and contribute to a team where I can apply and expand my skills in a practical environment. Let me know if you'd like to include details about personal projects or tools you’re familiar with (like GitHub ).
                 </p>
                 
                 {/* About page button */}
@@ -168,26 +161,29 @@ const Home = () => {
                 {/* project details page button */}
                 <div className="flex flex-row items-center justify-between py-5 px-8 bg-[#161B22] rounded-xl">
                     <h1 className="text-5xl font-humane">Recent Projects</h1>
-                    <button className="flex flex-row items-center gap-2 text-lg font-sans">See all <span className="text-white"><FaArrowRight /></span></button>
+                    <Link to="/projects" className="flex flex-row items-center gap-2 text-lg font-sans">See all <span className="text-white"><FaArrowRight /></span></Link>
                 </div>
 
                 {/* prject show card */}
                 <div>
 
+                   
                    { 
-                       projectData && projectData.length > 0 ? (<div className="grid grid-cols-3 gap-5">{ projectData.map( users => (
+                       projectData && projectData.length > 0 ? (<div className="grid grid-cols-3 gap-5">{projectData.slice(0, 3).map( users => (
                                 <div className="bg-[#8B949E] p-5 rounded-2xl overflow-hidden">
-                                <img src={users.image} alt="" />
+                                <div className="image-wrap">
+                                    <img className="rounded-xl" src={users.image} alt={users.name} />
+                                </div>
 
-                                <h1>{users.name}</h1>
+                                <h1 className="uppercase font-bold text-2xl font-sans my-2">{users.name}</h1>
 
-                                <p>{users.details}</p>
+                                <p className="capitalize font-sans">{users.details}</p>
 
                                 {/* More Images */}
-                                <div>
+                                <div className="flex flex-row gap-5 overflow-hidden my-5">
                                     {
                                         users?.multiple?.map(img => (
-                                            <img key={img._id} src={img} alt={img.name} />
+                                            <img className="w-16 h-16 object-cover rounded-2xl" key={img._id} src={img} alt={img.name} />
                                         ))
                                     }
                                 </div>
@@ -219,13 +215,13 @@ const Home = () => {
                     
                     {/* contact_icon */}
                     <div className="flex flex-row gap-5 text-black text-3xl">
-                        <Link to='https://github.com/Baizid-B' target="_blank"><FaGithub /></Link>
-                        <Link to='https://www.linkedin.com/in/baizid-bostami-36962b292/' target="_blank"><FaLinkedin /></Link>
-                        <Link to='https://www.facebook.com/baizidbr' target="_blank"><FaFacebook /></Link>
-                        <Link to='https://www.instagram.com/baizid_bostami21/' target="_blank"><AiFillInstagram /></Link>
+                        <Link className="hover:text-white transition-all duration-300 ease-in-out" to='https://github.com/Baizid-B' target="_blank"><FaGithub /></Link>
+                        <Link className="hover:text-white transition-all duration-300 ease-in-out" to='https://www.linkedin.com/in/baizid-bostami-36962b292/' target="_blank"><FaLinkedin /></Link>
+                        <Link className="hover:text-white transition-all duration-300 ease-in-out" to='https://www.facebook.com/baizidbr' target="_blank"><FaFacebook /></Link>
+                        <Link className="hover:text-white transition-all duration-300 ease-in-out" to='https://www.instagram.com/baizid_bostami21/' target="_blank"><AiFillInstagram /></Link>
                     </div>
 
-                    <button className="btn bg-transparent border-black border-2 rounded-xl text-lg font-neue tracking-wider">Contact Me <span><img className="w-5" src={contact_icon} alt="Contact icon" /></span></button>
+                    <Link to="/contact" className="btn bg-transparent border-black border-2 rounded-xl text-lg font-neue tracking-wider">Contact Me <span><img className="w-5" src={contact_icon} alt="Contact icon" /></span></Link>
                 </div>
             </div>
 

@@ -24,31 +24,19 @@ const About = () => {
                 <h1 className="font-humane text-6xl p-5 flex flex-row justify-center">About</h1>
             </div>
 
-            <div className="bg-[#161B22] rounded-lg p-11 flex flex-row items-center">
+            <div className="bg-[#161B22] rounded-lg p-11 flex flex-row">
                 {/* image */}
                 <div className="w-[40%] overflow-hidden bg-amber-300 rounded-2xl">
                     <img src={About_img} alt="About_image" />
                 </div>
 
                 {/* about_details */}
-                <div className="w-[58%] space-y-5 p-5">
-                    <p>
-                        I'm a Computer Science student at SRM Institute of Science and Technology.
-                        My passion lies in building user-friendly solutions that enhance overall user
-                        experiences. I am currently focused on React Native, Expo, Firebase, and React,
-                        leveraging these technologies to create responsive and functional applications.
-                        One of my ongoing projects is Rescue Paws, a mobile app designed to facilitate
-                        the rescue and adoption of stray and pet dogs. The app will soon be published
-                        on the Play Store and App Store, and it incorporates AI-driven features to guide users
-                        through the adoption process. In addition to app development, I’ve led the design and 
-                        development of platforms like the GitHub Community SRM website, which serves as an all-in-one
-                        platform for the community. I’ve also organized and managed events such as hackathons and workshops,
-                        mentoring others in UI/UX and graphic design. I thrive in Agile Scrum environments and believe
-                        or a collaborative team 
-                        member, I’m here to help bring ideas to life. Let’s connect and create innovative solutions together!
+                <div className="w-[58%] px-5 flex flex-col justify-between items-stretch">
+                    <p className="leading-relaxed text-lg">
+                        I’m an aspiring front-end developer passionate about building responsive and user-friendly web interfaces. Although I don’t have professional experience yet, I’ve been actively learning and practicing key technologies, including HTML, CSS, JavaScript, Tailwind CSS, React.js, MongoDB, Express.js, Node.js, and lastly, Next.js.I enjoy turning design ideas into functional and visually appealing websites. Through personal projects, online tutorials,and hands-on practice, I’ve developed a good understanding of modern web development concepts such as component-based design, responsive layouts, and interactive UI behavior. I’m highly motivated to grow, learn from real-world challenges, and contribute to a team where I can apply and expand my skills in a practical environment. Let me know if you'd like to include details about personal projects or tools you’re familiar with (like GitHub ).
                     </p>
                     
-                    <div className="flex flex-row justify-items-start">
+                    <div className="flex flex-row">
                         <Link to='' className="flex flex-row items-center gap-2 p-2 rounded-lg bg-transparent border-[#D5FF3F] border-2 text-[#D5FF3F] font-semibold">
                             <span className="text-[#D5FF3F]"><FaFile /></span> Download Resume
                         </Link>
@@ -60,25 +48,25 @@ const About = () => {
                 {/* skills */}
                 <div className="w-[67%] py-6 flex flex-row bg-[#161B22] rounded-lg">
                     <Marquee>
-                        <div className="text-6xl px-6 text-[#D5FF3F]"><FaHtml5 /></div>
-                        <div className="text-6xl px-6 text-[#D5FF3F]"><SiCss3 /></div>
-                        <div className="text-6xl px-6 text-[#D5FF3F]"><FaJsSquare /></div>
-                        <div className="text-6xl px-6 text-[#D5FF3F]"><RiTailwindCssFill /></div>
-                        <div className="text-6xl px-6 text-[#D5FF3F]"><RiReactjsFill /></div>
-                        <div className="text-6xl px-6 text-[#D5FF3F]"><SiFirebase /></div>
-                        <div className="text-6xl px-6 text-[#D5FF3F]"><SiMongodb /></div>
-                        <div className="text-6xl px-6 text-[#D5FF3F]"><FaNodeJs /></div>
-                        <div className="text-6xl px-6 text-[#D5FF3F]"><SiExpress /></div>
-                        <div className="text-6xl px-6 text-[#D5FF3F]"><FaGithub /></div>
+                        <div className="text-6xl px-8 text-[#D5FF3F]"><FaHtml5 /></div>
+                        <div className="text-6xl px-8 text-[#D5FF3F]"><SiCss3 /></div>
+                        <div className="text-6xl px-8 text-[#D5FF3F]"><FaJsSquare /></div>
+                        <div className="text-6xl px-8 text-[#D5FF3F]"><RiTailwindCssFill /></div>
+                        <div className="text-6xl px-8 text-[#D5FF3F]"><RiReactjsFill /></div>
+                        <div className="text-6xl px-8 text-[#D5FF3F]"><SiFirebase /></div>
+                        <div className="text-6xl px-8 text-[#D5FF3F]"><SiMongodb /></div>
+                        <div className="text-6xl px-8 text-[#D5FF3F]"><FaNodeJs /></div>
+                        <div className="text-6xl px-8 text-[#D5FF3F]"><SiExpress /></div>
+                        <div className="text-6xl px-8 text-[#D5FF3F]"><FaGithub /></div>
                     </Marquee>
                 </div>
 
                 {/* Social icon */}
                 <div className="w-2/6 py-9 flex flex-row gap-5 justify-center bg-[#161B22] text-4xl rounded-lg">
-                    <Link to='https://github.com/Baizid-B' target="_blank"><FaGithub /></Link>
-                    <Link to='https://www.linkedin.com/in/baizid-bostami-36962b292/' target="_blank"><FaLinkedin /></Link>
-                    <Link to='https://www.facebook.com/baizidbr' target="_blank"><FaFacebook /></Link>
-                    <Link to='https://www.instagram.com/baizid_bostami21/' target="_blank"><AiFillInstagram /></Link>
+                    <Link className="hover:text-[#d5ff3f] transition-all duration-300 ease-in-out" to='https://github.com/Baizid-B' target="_blank"><FaGithub /></Link>
+                    <Link className="hover:text-[#d5ff3f] transition-all duration-300 ease-in-out" to='https://www.linkedin.com/in/baizid-bostami-36962b292/' target="_blank"><FaLinkedin /></Link>
+                    <Link className="hover:text-[#d5ff3f] transition-all duration-300 ease-in-out" to='https://www.facebook.com/baizidbr' target="_blank"><FaFacebook /></Link>
+                    <Link className="hover:text-[#d5ff3f] transition-all duration-300 ease-in-out" to='https://www.instagram.com/baizid_bostami21/' target="_blank"><AiFillInstagram /></Link>
                 </div>
             </div>
         </div>

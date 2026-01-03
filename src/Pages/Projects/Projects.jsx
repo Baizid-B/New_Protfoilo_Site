@@ -5,25 +5,30 @@ const Projects = () => {
  const projectData = useLoaderData()
 
   return (
-    <div className="h-screen">
+    <div className="w-11/12 mx-auto py-20">
       {projectData && projectData.length > 0 ? (
         <div className="grid grid-cols-3 gap-5">
           {projectData.map((users) => (
-            <div className="bg-[#8B949E] p-5 rounded-2xl overflow-hidden">
-              <img src={users.image} alt="" />
 
-              <h1>{users.name}</h1>
+            <div className="bg-[#8B949E] p-5 rounded-2xl" key={users._id}>
+                <div className="image-wrap">
+                  <img className="rounded-xl" src={users.image} alt={users.name} />
+                </div>
 
-              <p>{users.details}</p>
+                    <h1 className="uppercase font-bold text-2xl font-sans my-2">{users.name}</h1>
+                    <p className="capitalize font-sans">{users.details}</p>
 
-              {/* More Images */}
-              <div>
-                {users?.multiple?.map((img) => (
-                  <img key={img._id} src={img} alt={img.name} />
-                ))}
-              </div>
+                    {/* More Images */}
+                      <div className="flex flex-row gap-5 overflow-hidden my-5">
+                          {
+                            users?.multiple?.map(img => (
+                              <img className="w-16 h-16 object-cover rounded-2xl" key={img._id} src={img} alt={img.name} />
+                            ))
+                          }
+                      </div>
+
             </div>
-          ))}{" "}
+          ))}
         </div>
       ) : (
         <p className="flex justify-center items-center p-5 text-xl font-semibold font-sans w-full h-screen">
