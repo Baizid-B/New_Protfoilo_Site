@@ -1,8 +1,9 @@
+import toast from "react-hot-toast";
 
 const Add_project = () => {
 
   // Submit handler
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
 
@@ -13,26 +14,43 @@ const Add_project = () => {
 
     const data = {image,name, multiple, details}
 
-    console.log("all data:", data);
+    
+    try {
+      const res = await fetch("http://localhost:5000/project", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-    fetch("http://localhost:5000/project",{
-      method:"POST",
-      headers:{
-        "Content-Type": "application/json"
-      },
-      body:JSON.stringify(data)
-    })
-    .then(res => res.json())
-    .then(data =>{
-      console.log(data);
-      if(data.insertedId){
-        alert("Project added successfully")
-        e.target.reset()
-      }else{
-        alert("Failed to add project!")
+      const result = await res.json();
+
+      // ❌ Validation / rate limit / server error
+      if (!res.ok) {
+        if (result.errors) {
+          result.errors.forEach(err => {
+            toast.error(err.msg);
+          });
+        } else if (result.message) {
+          toast.error(result.message);
+        } else {
+          toast.error("Something went wrong");
+        }
+        return;
       }
-    })
 
+      // ✅ Success
+      if (result.insertedId) {
+        toast.success("Project added successfully!");
+        e.target.reset();
+      }
+
+    } 
+    // eslint-disable-next-line no-unused-vars
+    catch (error) {
+      toast.error("Server not responding");
+    }
   };
 
   return (
@@ -51,10 +69,10 @@ const Add_project = () => {
             <input
               type="text"
               name="Main_Image"
+              placeholder="must be a valid url*"
               className="file:mr-4 file:py-2 file:px-4
                         text-black
                         border border-gray-300 rounded-md p-2"
-              required
             />
            
           </div>
@@ -67,10 +85,9 @@ const Add_project = () => {
             <input
               type="text"
               name="project_name"
-              placeholder="Enter project name"
+              placeholder="Enter project name*"
               className="border text-black border-gray-300 rounded-md px-3 py-2
                         focus:outline-none focus:ring-2 focus:ring-black"
-              required
             />
           </div>
 
@@ -83,10 +100,10 @@ const Add_project = () => {
               <input
                 type="text"
                 name="Mult_images"
-                className="border cursor-pointer border-gray-300 rounded-md p-2 bg-white
+                placeholder="must be a valid url*"
+                className="border border-gray-300 rounded-md p-2 bg-white
                           text-black
                           file:rounded-md"
-                required
               />
             </div>
             <div className="flex flex-col gap-3">
@@ -96,10 +113,10 @@ const Add_project = () => {
               <input
                 type="text"
                 name="Mult_images"
-                className="border cursor-pointer border-gray-300 rounded-md p-2 bg-white
+                placeholder="must be a valid url*"
+                className="border border-gray-300 rounded-md p-2 bg-white
                           text-black
                           file:rounded-md"
-                required
               />
             </div>
           </div>
@@ -112,10 +129,9 @@ const Add_project = () => {
 
                 <textarea 
                 name="text-details" 
-                placeholder="Enter project details"
+                placeholder="Enter project details*"
                 className="border text-black border-gray-300 rounded-md px-3 py-2
                         focus:outline-none focus:ring-2 focus:ring-black"
-                required
                 ></textarea>
           </div>
 
