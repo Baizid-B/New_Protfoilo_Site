@@ -124,10 +124,11 @@ const Home = () => {
                     </div>
                 </Marquee>
             </div>
+            
             <div className="absolute inset-0 flex flex-col justify-center items-center z-2">
                 <p className="font-sans text-[#D5FF3F] text-xl">Hey There I'm</p>
-                <h1 className="font-humane text-[#D5FF3F] text-[280px] leading-none -tracking-normal">Baizid</h1>
-                <p className="font-sans text-[#D5FF3F] text-xl -mt-11.25">currently studying Computer science and Engineering</p>
+                <h1 className="font-humane text-[#D5FF3F] text-[200px] md:text-[280px] leading-none -tracking-normal">Baizid</h1>
+                <p className="font-sans text-[#D5FF3F] text-center text-xl -mt-8 md:-mt-11.25">currently studying Computer science and Engineering</p>
 
                 {/* icon */}
                 <div className="flex flex-row gap-3 mt-5">
@@ -140,15 +141,15 @@ const Home = () => {
         
         <div className="w-11/12 mx-auto">
             {/* Home_about_section */}
-            <div className="bg-[#D5FF3F] px-24 py-12 rounded-xl space-y-5 my-20">
+            <div className="bg-[#D5FF3F] px-5 md:px-14 lg:px-24 py-5 md:py-8 lg:py-12 rounded-xl space-y-5 my-20">
 
                 <h1 className="uppercase font-humane text-5xl text-center text-[#161B22]">about</h1>
-                <p className="text-[#161B22] capitalize font-sans">
+                <p className="text-[#161B22] text-left capitalize font-sans">
                     I’m an aspiring front-end developer passionate about building responsive and user-friendly web interfaces. Although I don’t have professional experience yet, I’ve been actively learning and practicing key technologies, including HTML, CSS, JavaScript, Tailwind CSS, React.js, MongoDB, Express.js, Node.js, and lastly, Next.js.I enjoy turning design ideas into functional and visually appealing websites. Through personal projects, online tutorials,and hands-on practice, I’ve developed a good understanding of modern web development concepts such as component-based design, responsive layouts, and interactive UI behavior. I’m highly motivated to grow, learn from real-world challenges, and contribute to a team where I can apply and expand my skills in a practical environment. Let me know if you'd like to include details about personal projects or tools you’re familiar with (like GitHub ).
                 </p>
                 
                 {/* About page button */}
-                <div className="flex justify-end pr-8">
+                <div className="flex justify-start md:justify-end pr-8">
                     <Link to='/about'>
                         <button className="btn rounded-lg border-none py-2.5 px-5 text-[#D5FF3F] bg-[#242938]">More...</button>
                     </Link>
@@ -159,7 +160,7 @@ const Home = () => {
             {/* Home_project_section */}
             <div className="flex flex-col gap-5 my-20">
                 {/* project details page button */}
-                <div className="flex flex-row items-center justify-between py-5 px-8 bg-[#161B22] rounded-xl">
+                <div className="flex flex-col md:flex-row md:items-center justify-between py-5 px-8 bg-[#161B22] rounded-xl">
                     <h1 className="text-5xl font-humane">Recent Projects</h1>
                     <Link to="/projects" className="flex flex-row items-center gap-2 text-lg font-sans">See all <span className="text-white"><FaArrowRight /></span></Link>
                 </div>
@@ -169,8 +170,8 @@ const Home = () => {
 
                    
                    { 
-                       projectData && projectData.length > 0 ? (<div className="grid grid-cols-3 gap-5">{projectData.slice(0, 3).map( users => (
-                                <div className="bg-[#8B949E] p-5 rounded-2xl overflow-hidden">
+                       projectData && projectData.length > 0 ? (<div className="grid grid-cols-1 md:grid-cols-3 gap-5">{projectData.slice(0, 3).map( users => (
+                                <div className="bg-[#8B949E] p-2.5 md:p-5 rounded-2xl overflow-hidden">
                                 <div className="image-wrap">
                                     <img className="rounded-xl" src={users.image} alt={users.name} />
                                 </div>
@@ -197,11 +198,11 @@ const Home = () => {
             </div>
 
             {/* Home_contact_section */}
-            <div className="bg-[#D5FF3F] flex flex-row justify-between items-top p-12 rounded-xl">
+            <div className="bg-[#D5FF3F] flex flex-col gap-12 md:gap-0 md:flex-row justify-between items-top p-5 md:p-12 rounded-xl">
                 <div className="">
                     <h1 className="font-humane text-black text-8xl">Get in Touch</h1>
 
-                    <p className="w-96 capitalize text-black font-sans">
+                    <p className="w-auto capitalize text-black font-sans">
                         If you are interested in my
                         work or want to provide feedback
                         about this website, I am open to
