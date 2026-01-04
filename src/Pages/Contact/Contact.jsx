@@ -1,6 +1,19 @@
 import contect_img from "../../assets/contact_page_image/contact_page_image.jpg";
 
 const Contact = () => {
+
+    const handleSubmit = (e) =>{
+        e.preventDefault()
+
+        const contactForm = new FormData(e.target)
+
+        const first_name = contactForm.get("First_Name")
+        const email = contactForm.get("email")
+        const message = contactForm.get("message")
+
+        console.log(first_name, email, message);
+    }
+
     return (
         <div className="w-11/12 mx-auto space-y-5 min-h-screen bg-cover bg-center rounded-2xl " style={{backgroundImage:`url(${contect_img})`}}>
             <div className="bg-[#161B22] rounded-lg">
@@ -9,7 +22,7 @@ const Contact = () => {
 
             {/* contact form */}
             <div className="flex justify-center">
-                <form className="w-1/2 space-y-5 py-20">
+                <form onSubmit={handleSubmit} className="w-10/12 lg:w-1/2 space-y-5 py-20">
 
                     <div className="flex flex-col gap-2">
                         <label>Name</label>
@@ -23,10 +36,10 @@ const Contact = () => {
 
                     <div className="flex flex-col gap-2">
                         <label>Message</label>
-                        <textarea className="border focus:border-[#d5ff3f] focus:outline-none transition duration-300 rounded-md w-full min-h-50 px-3 py-3 bg-gray-100 text-black" type="textarea" name="" placeholder="Enter Your Message"/>
+                        <textarea className="border focus:border-[#d5ff3f] focus:outline-none transition duration-300 rounded-md w-full min-h-50 px-3 py-3 bg-gray-100 text-black" type="textarea" name="message" placeholder="Enter Your Message"/>
                     </div>
                                         
-                    <input className="btn w-full text-lg uppercase bg-white h-12" type="submit" value="submit" />
+                    <input className="btn w-full text-lg uppercase text-black bg-white h-12" type="submit" value="submit" />
                 </form>
             </div>
 
