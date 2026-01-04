@@ -1,17 +1,29 @@
 import contect_img from "../../assets/contact_page_image/contact_page_image.jpg";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
 
     const handleSubmit = (e) =>{
         e.preventDefault()
 
-        const contactForm = new FormData(e.target)
+        // const contactForm = new FormData(e.target)
 
-        const first_name = contactForm.get("First_Name")
-        const email = contactForm.get("email")
-        const message = contactForm.get("message")
+        emailjs.sendForm(
+            "service_ao2mbh8",      // EmailJS Service ID
+            "template_1oix8fn",     // Template ID
+            e.target,
+            "sccyLbw-_fjNnMVSn"    // Public Key
+        )
+        .then(() => {
+            alert("Message sent successfully!");
+            e.target.reset();
+        })
+        .catch(() => {
+            alert("Failed to send message");
+        });
 
-        console.log(first_name, email, message);
+        
+        
     }
 
     return (
@@ -26,7 +38,7 @@ const Contact = () => {
 
                     <div className="flex flex-col gap-2">
                         <label>Name</label>
-                        <input className="border focus:border-[#d5ff3f] focus:outline-none transition duration-300 rounded-md w-full h-16 px-3 bg-gray-100 text-black" type="text" name="First_Name" placeholder="Enter Your First Name" />
+                        <input className="border focus:border-[#d5ff3f] focus:outline-none transition duration-300 rounded-md w-full h-16 px-3 bg-gray-100 text-black" type="text" name="name" placeholder="Enter Your First Name" />
                     </div>
 
                     <div className="flex flex-col gap-2">
