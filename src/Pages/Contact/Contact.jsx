@@ -1,5 +1,7 @@
 import contect_img from "../../assets/contact_page_image/contact_page_image.jpg";
 import emailjs from "@emailjs/browser";
+import toast, { Toaster } from 'react-hot-toast';
+
 
 const Contact = () => {
 
@@ -9,17 +11,17 @@ const Contact = () => {
         // const contactForm = new FormData(e.target)
 
         emailjs.sendForm(
-            "service_ao2mbh8",      // EmailJS Service ID
-            "template_1oix8fn",     // Template ID
+            import.meta.env.VITE_EMAILJS_SERVICE_KEY,      // EmailJS Service ID
+            import.meta.env.VITE_EMAILJS_TEMPLATE_KEY,     // Template ID
             e.target,
-            "sccyLbw-_fjNnMVSn"    // Public Key
+            import.meta.env.VITE_EMAILJS_PUBLIC_KEY   // Public Key
         )
         .then(() => {
-            alert("Message sent successfully!");
+            toast.success("Message sent successfully!");
             e.target.reset();
         })
         .catch(() => {
-            alert("Failed to send message");
+            toast.error("Failed to send message");
         });
 
         
@@ -38,17 +40,17 @@ const Contact = () => {
 
                     <div className="flex flex-col gap-2">
                         <label>Name</label>
-                        <input className="border focus:border-[#d5ff3f] focus:outline-none transition duration-300 rounded-md w-full h-16 px-3 bg-gray-100 text-black" type="text" name="name" placeholder="Enter Your First Name" />
+                        <input className="border focus:border-[#d5ff3f] focus:outline-none transition duration-300 rounded-md w-full h-16 px-3 bg-gray-100 text-black" type="text" name="name" placeholder="Enter Your First Name"  required/>
                     </div>
 
                     <div className="flex flex-col gap-2">
                         <label>Email</label>
-                        <input className="border focus:border-[#d5ff3f] focus:outline-none transition duration-300 rounded-md w-full h-16 px-3 bg-gray-100 text-black" type="email" name="email" placeholder="Enter Your Email" />
+                        <input className="border focus:border-[#d5ff3f] focus:outline-none transition duration-300 rounded-md w-full h-16 px-3 bg-gray-100 text-black" type="email" name="email" placeholder="Enter Your Email"  required/>
                     </div>
 
                     <div className="flex flex-col gap-2">
                         <label>Message</label>
-                        <textarea className="border focus:border-[#d5ff3f] focus:outline-none transition duration-300 rounded-md w-full min-h-50 px-3 py-3 bg-gray-100 text-black" type="textarea" name="message" placeholder="Enter Your Message"/>
+                        <textarea className="border focus:border-[#d5ff3f] focus:outline-none transition duration-300 rounded-md w-full min-h-50 px-3 py-3 bg-gray-100 text-black" type="textarea" name="message" placeholder="Enter Your Message" required/>
                     </div>
                                         
                     <input className="btn w-full text-lg uppercase text-black bg-white h-12" type="submit" value="submit" />
