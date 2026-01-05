@@ -1,6 +1,6 @@
 import contect_img from "../../assets/contact_page_image/contact_page_image.jpg";
 import emailjs from "@emailjs/browser";
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 
 const Contact = () => {
@@ -21,11 +21,10 @@ const Contact = () => {
             e.target.reset();
         })
         .catch(() => {
+            // console.log(error.text);
             toast.error("Failed to send message");
         });
-
-        
-        
+               
     }
 
     return (
@@ -50,7 +49,7 @@ const Contact = () => {
 
                     <div className="flex flex-col gap-2">
                         <label>Message</label>
-                        <textarea className="border focus:border-[#d5ff3f] focus:outline-none transition duration-300 rounded-md w-full min-h-50 px-3 py-3 bg-gray-100 text-black" type="textarea" name="message" placeholder="Enter Your Message" required/>
+                        <textarea className="border focus:border-[#d5ff3f] focus:outline-none transition duration-300 rounded-md w-full min-h-50 px-3 py-3 bg-gray-100 text-black" name="message" placeholder="Enter Your Message" required/>
                     </div>
                                         
                     <input className="btn w-full text-lg uppercase text-black bg-white h-12" type="submit" value="submit" />
