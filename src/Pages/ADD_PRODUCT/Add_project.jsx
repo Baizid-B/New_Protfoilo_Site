@@ -1,22 +1,20 @@
 import toast from "react-hot-toast";
 
 const Add_project = () => {
-
   // Submit handler
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
 
     const image = formData.get("Main_Image");
     const name = formData.get("project_name");
-    const details = formData.get("text-details")
+    const details = formData.get("text-details");
     const multiple = formData.getAll("Mult_images");
 
-    const data = {image,name, multiple, details}
+    const data = { image, name, multiple, details };
 
-    
     try {
-      const res = await fetch("http://localhost:5000/project", {
+      const res = await fetch("https://protfoilo-backend.vercel.app/project", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -29,7 +27,7 @@ const Add_project = () => {
       // ❌ Validation / rate limit / server error
       if (!res.ok) {
         if (result.errors) {
-          result.errors.forEach(err => {
+          result.errors.forEach((err) => {
             toast.error(err.msg);
           });
         } else if (result.message) {
@@ -45,10 +43,8 @@ const Add_project = () => {
         toast.success("Project added successfully!");
         e.target.reset();
       }
-
-    } 
-    // eslint-disable-next-line no-unused-vars
-    catch (error) {
+    } catch (error) {
+      // eslint-disable-next-line no-unused-vars
       toast.error("Server not responding");
     }
   };
@@ -74,7 +70,6 @@ const Add_project = () => {
                         text-black
                         border border-gray-300 rounded-md p-2"
             />
-           
           </div>
 
           {/* Project Name */}
@@ -123,16 +118,16 @@ const Add_project = () => {
 
           {/* Project Details */}
           <div className="flex flex-col gap-3">
-                <label className="text-sm font-medium text-gray-700">
-                  Project Details
-                </label>
+            <label className="text-sm font-medium text-gray-700">
+              Project Details
+            </label>
 
-                <textarea 
-                name="text-details" 
-                placeholder="Enter project details*"
-                className="border text-black border-gray-300 rounded-md px-3 py-2
+            <textarea
+              name="text-details"
+              placeholder="Enter project details*"
+              className="border text-black border-gray-300 rounded-md px-3 py-2
                         focus:outline-none focus:ring-2 focus:ring-black"
-                ></textarea>
+            ></textarea>
           </div>
 
           {/* Submit Button */}
