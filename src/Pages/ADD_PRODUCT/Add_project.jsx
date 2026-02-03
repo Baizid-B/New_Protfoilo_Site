@@ -10,8 +10,9 @@ const Add_project = () => {
     const name = formData.get("project_name");
     const details = formData.get("text-details");
     const multiple = formData.getAll("Mult_images");
+    const project_view_link = formData.get("project_view_link");
 
-    const data = { image, name, multiple, details };
+    const data = { image, name, multiple, details, project_view_link };
 
     try {
       const res = await fetch("https://protfoilo-backend.vercel.app/project", {
@@ -43,6 +44,7 @@ const Add_project = () => {
         toast.success("Project added successfully!");
         e.target.reset();
       }
+    // eslint-disable-next-line no-unused-vars
     } catch (error) {
       // eslint-disable-next-line no-unused-vars
       toast.error("Server not responding");
@@ -50,7 +52,7 @@ const Add_project = () => {
   };
 
   return (
-    <div className="h-screen flex justify-center items-center my-12">
+    <div className="h-screen flex justify-center items-center ">
       <div className="w-full max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-6">
         <h2 className="text-2xl font-semibold mb-6 text-gray-800">
           Add New Project
@@ -88,9 +90,11 @@ const Add_project = () => {
 
           {/* Multiple Images */}
           <div className="grid grid-cols-2 gap-5">
+
+            {/* Image_link_1*/}
             <div className="flex flex-col gap-3">
               <label className="text-sm font-medium text-gray-700">
-                Technology Images
+                Technology Images-1
               </label>
               <input
                 type="text"
@@ -101,9 +105,71 @@ const Add_project = () => {
                           file:rounded-md"
               />
             </div>
+
+            {/* Image_link_2*/}
             <div className="flex flex-col gap-3">
               <label className="text-sm font-medium text-gray-700">
-                Technology Images
+                Technology Images-2
+              </label>
+              <input
+                type="text"
+                name="Mult_images"
+                placeholder="must be a valid url*"
+                className="border border-gray-300 rounded-md p-2 bg-white
+                          text-black
+                          file:rounded-md"
+              />
+            </div>
+
+            {/* Image_link_3*/}
+            <div className="flex flex-col gap-3">
+              <label className="text-sm font-medium text-gray-700">
+                Technology Images-3
+              </label>
+              <input
+                type="text"
+                name="Mult_images"
+                placeholder="must be a valid url*"
+                className="border border-gray-300 rounded-md p-2 bg-white
+                          text-black
+                          file:rounded-md"
+              />
+            </div>
+
+            {/* Image_link_4*/}
+            <div className="flex flex-col gap-3">
+              <label className="text-sm font-medium text-gray-700">
+                Technology Images-4
+              </label>
+              <input
+                type="text"
+                name="Mult_images"
+                placeholder="must be a valid url*"
+                className="border border-gray-300 rounded-md p-2 bg-white
+                          text-black
+                          file:rounded-md"
+              />
+            </div>
+
+            {/* Image_link_5*/}
+            <div className="flex flex-col gap-3">
+              <label className="text-sm font-medium text-gray-700">
+                Technology Images-5
+              </label>
+              <input
+                type="text"
+                name="Mult_images"
+                placeholder="must be a valid url*"
+                className="border border-gray-300 rounded-md p-2 bg-white
+                          text-black
+                          file:rounded-md"
+              />
+            </div>
+
+            {/* Image_link_6*/}
+            <div className="flex flex-col gap-3">
+              <label className="text-sm font-medium text-gray-700">
+                Technology Images-6
               </label>
               <input
                 type="text"
@@ -129,6 +195,21 @@ const Add_project = () => {
                         focus:outline-none focus:ring-2 focus:ring-black"
             ></textarea>
           </div>
+
+          {/* Project viwe link */}
+          <div className="flex flex-col gap-1">
+            <label className="text-sm font-medium text-gray-700">
+              Project View Link
+            </label>
+            <input
+              type="text"
+              name="project_view_link"
+              placeholder="Enter project link*"
+              className="border text-black border-gray-300 rounded-md px-3 py-2
+                        focus:outline-none focus:ring-2 focus:ring-black"
+            />
+          </div>
+
 
           {/* Submit Button */}
           <button

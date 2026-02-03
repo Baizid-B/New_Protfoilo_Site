@@ -93,7 +93,7 @@ const Home = () => {
                             fontFamily="Neue, sans-serif"
                             transform="scale(1, 1.4)"
                             >
-                            FRONT-END DEVELOPER
+                            BACK-END DEVELOPER
                             </text>
                         </svg>
                     </div>
@@ -118,7 +118,7 @@ const Home = () => {
                             fontFamily="Neue, sans-serif"
                             transform="scale(1, 1.4)"
                             >
-                            FRONT-END DEVELOPER
+                            BACK-END DEVELOPER
                             </text>
                         </svg>
                     </div>

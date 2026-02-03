@@ -5,7 +5,7 @@ const Projects = () => {
  const projectData = useLoaderData()
 
   return (
-    <div className="w-11/12 mx-auto py-20">
+    <div className="w-11/12 mx-auto ">
       {projectData && projectData.length > 0 ? (
         <div className="grid grid-cols-3 gap-5">
           {projectData.map((users) => (
