@@ -11,8 +11,11 @@ const Add_project = () => {
     const details = formData.get("text-details");
     const multiple = formData.getAll("Mult_images");
     const project_view_link = formData.get("project_view_link");
+    const short = formData.get("short-details")
 
-    const data = { image, name, multiple, details, project_view_link };
+    const data = { image, name, multiple, details, project_view_link,short };
+    console.log(data);
+    
 
     try {
       const res = await fetch("https://protfoilo-backend.vercel.app/project", {
@@ -59,20 +62,6 @@ const Add_project = () => {
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-5">
-          {/* Main Image */}
-          <div className="flex flex-col gap-1">
-            <label className="text-sm font-medium text-gray-700">
-              Project Image
-            </label>
-            <input
-              type="text"
-              name="Main_Image"
-              placeholder="must be a valid url*"
-              className="file:mr-4 file:py-2 file:px-4
-                        text-black
-                        border border-gray-300 rounded-md p-2"
-            />
-          </div>
 
           {/* Project Name */}
           <div className="flex flex-col gap-1">
@@ -87,6 +76,53 @@ const Add_project = () => {
                         focus:outline-none focus:ring-2 focus:ring-black"
             />
           </div>
+
+
+          {/* Main Image */}
+          <div className="flex flex-col md:flex-row gap-5">
+              <div className="w-full flex flex-col gap-1">
+                <label className="text-sm font-medium text-gray-700">
+                  Project Image
+                </label>
+                <input
+                  type="text"
+                  name="Main_Image"
+                  placeholder="must be a valid url*"
+                  className="file:mr-4 file:py-2 file:px-4
+                            text-black
+                            border border-gray-300 rounded-md p-2"
+                />
+              </div>
+
+              {/* Project viwe link */}
+              <div className="w-full flex flex-col gap-1">
+                <label className="text-sm font-medium text-gray-700">
+                  Project View Link
+                </label>
+                <input
+                  type="text"
+                  name="project_view_link"
+                  placeholder="Enter project link*"
+                  className="border text-black border-gray-300 rounded-md px-3 py-2
+                            focus:outline-none focus:ring-2 focus:ring-black"
+                />
+              </div>
+          </div>
+
+          {/* Project short Details */}
+          <div className="flex flex-col gap-3">
+            <label className="text-sm font-medium text-gray-700">
+              Project Short Details
+            </label>
+
+            <textarea
+              name="short-details"
+              placeholder="Enter project details*"
+              className="border text-black border-gray-300 rounded-md px-3 py-2
+                        focus:outline-none focus:ring-2 focus:ring-black"
+            ></textarea>
+          </div>
+
 
           {/* Multiple Images */}
           <div className="grid grid-cols-2 gap-5">
@@ -196,19 +232,6 @@ const Add_project = () => {
             ></textarea>
           </div>
 
-          {/* Project viwe link */}
-          <div className="flex flex-col gap-1">
-            <label className="text-sm font-medium text-gray-700">
-              Project View Link
-            </label>
-            <input
-              type="text"
-              name="project_view_link"
-              placeholder="Enter project link*"
-              className="border text-black border-gray-300 rounded-md px-3 py-2
-                        focus:outline-none focus:ring-2 focus:ring-black"
-            />
-          </div>
 
 
           {/* Submit Button */}
@@ -225,3 +248,4 @@ const Add_project = () => {
 };
 
 export default Add_project;
+
