@@ -7,7 +7,7 @@ const Projects = () => {
   return (
     <div className="w-11/12 mx-auto ">
       {projectData && projectData.length > 0 ? (
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {projectData.map((users) => (
 
             <div className="bg-[#8B949E] p-5 rounded-2xl overflow-hidden" key={users._id}>
@@ -16,7 +16,7 @@ const Projects = () => {
                 </div>
 
                     <h1 className="uppercase font-bold text-2xl font-sans my-2">{users.name}</h1>
-                    <p className="capitalize font-sans px-2">{users.details}</p>
+                    <p className="capitalize font-sans px-2">{users.shortDetail}</p>
 
                     {/* More Images */}
                       <div className="flex flex-row gap-5 overflow-hidden my-5">

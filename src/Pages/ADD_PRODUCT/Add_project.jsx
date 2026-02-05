@@ -11,10 +11,10 @@ const Add_project = () => {
     const details = formData.get("text-details");
     const multiple = formData.getAll("Mult_images");
     const project_view_link = formData.get("project_view_link");
-    const short = formData.get("short-details")
+    const shortDetail = formData.get("short-details")
 
-    const data = { image, name, multiple, details, project_view_link,short };
-    console.log(data);
+    const data = { image, name, multiple, details, project_view_link,shortDetail };
+    // console.log(data);
     
 
     try {
