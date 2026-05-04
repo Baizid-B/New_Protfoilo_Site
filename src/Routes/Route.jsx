@@ -6,6 +6,7 @@ import Error from "../Pages/Error/Error";
 import Contact from "../Pages/Contact/Contact";
 import Add_project from "../Pages/ADD_PRODUCT/Add_project";
 import Projects from "../Pages/Projects/Projects";
+import ProjectDetail from "../Pages/Projects/ProjectDetail";
 
 export const router = createBrowserRouter([
   {
@@ -23,7 +24,7 @@ export const router = createBrowserRouter([
         element: <About></About>,
       },
       {
-        path: "/Projects",
+        path: "/projects",
         element: <Projects></Projects>,
         loader: () => fetch("https://protfoilo-backend.vercel.app/projects"),
       },
@@ -35,6 +36,11 @@ export const router = createBrowserRouter([
         path: "/add_project",
         element: <Add_project></Add_project>,
       },
+      {
+        path: "/projects/:id",
+        element: <ProjectDetail></ProjectDetail>,
+        loader: ({params}) => fetch(`https://protfoilo-backend.vercel.app/projects/${params.id}`)
+      }
     ],
   },
 ]);

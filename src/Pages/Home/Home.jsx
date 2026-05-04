@@ -93,7 +93,7 @@ const Home = () => {
                             fontFamily="Neue, sans-serif"
                             transform="scale(1, 1.4)"
                             >
-                            FRONT-END DEVELOPER
+                            BACK-END DEVELOPER
                             </text>
                         </svg>
                     </div>
@@ -118,7 +118,7 @@ const Home = () => {
                             fontFamily="Neue, sans-serif"
                             transform="scale(1, 1.4)"
                             >
-                            FRONT-END DEVELOPER
+                            BACK-END DEVELOPER
                             </text>
                         </svg>
                     </div>
@@ -178,7 +178,7 @@ const Home = () => {
 
                                 <h1 className="uppercase font-bold text-2xl font-sans my-2">{users.name}</h1>
 
-                                <p className="capitalize font-sans">{users.details}</p>
+                                <p className="capitalize font-sans">{users.shortDetail}</p>
 
                                 {/* More Images */}
                                 <div className="flex flex-row gap-5 overflow-hidden my-5">
@@ -188,6 +188,8 @@ const Home = () => {
                                         ))
                                     }
                                 </div>
+
+                                <Link to={`/projects/${users._id}`} className="btn bg-[#242938] text-white rounded-lg py-2 px-5">View Details</Link>
                             </div>
                         ))} </div>) : (<p className="flex justify-center items-center p-5 text-xl font-semibold font-sans w-full">
                             No data avabaliable

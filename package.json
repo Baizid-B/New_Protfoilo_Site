@@ -19,8 +19,12 @@
     "react-fast-marquee": "^1.6.5",
     "react-hot-toast": "^2.6.0",
     "react-icons": "^5.5.0",
+<<<<<<< HEAD
     "react-router": "^7.11.0",
     "react-router-dom": "^7.14.2",
+=======
+    "react-router": "^7.13.0",
+>>>>>>> ab77dfb64f1e036aac3a88c64034268f981efe73
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
