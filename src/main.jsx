@@ -4,12 +4,19 @@ import './index.css'
 import { RouterProvider } from "react-router/dom";
 import { router } from './Routes/Route';
 import { Toaster } from 'react-hot-toast';
+import Loading from './Components/Loading';
 
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Toaster position="top-right" />
-    <RouterProvider router={router} />
+    
+    <RouterProvider 
+      router={router}
+      fallbackElement={<Loading />}
+     />
   </StrictMode>,
 )
+
+
