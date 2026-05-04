@@ -1,12 +1,26 @@
 import { createBrowserRouter } from "react-router";
 import Main from "../Layout/Main";
-import Home from "../Pages/Home/Home";
-import About from "../Pages/About/About";
-import Error from "../Pages/Error/Error";
-import Contact from "../Pages/Contact/Contact";
-import Add_project from "../Pages/ADD_PRODUCT/Add_project";
-import Projects from "../Pages/Projects/Projects";
-import ProjectDetail from "../Pages/Projects/ProjectDetail";
+import Loading from "../Components/Loading";
+import React, { lazy, Suspense } from "react";
+
+
+const Home = lazy(() => import("../Pages/Home/Home"));
+const About = lazy(() => import("../Pages/About/About"));
+const Error = lazy(() => import("../Pages/Error/Error"));
+const Contact = lazy(() => import("../Pages/Contact/Contact"));
+const Add_project = lazy(() => import("../Pages/ADD_PRODUCT/Add_project"));
+const Projects = lazy(() => import("../Pages/Projects/Projects"));
+const ProjectDetail = lazy(() => import("../Pages/Projects/ProjectDetail"));
+
+
+const withLoading = (Component) => {
+  return (
+    <Suspense fallback={<Loading />}>
+      {React.createElement(Component)}
+    </Suspense>
+  );
+};
+
 
 export const router = createBrowserRouter([
   {
@@ -16,29 +30,29 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>,
+        element: withLoading(Home),
         loader: () => fetch("https://protfoilo-backend.vercel.app/projects"),
       },
       {
         path: "/about",
-        element: <About></About>,
-      },
-      {
-        path: "/projects",
-        element: <Projects></Projects>,
-        loader: () => fetch("https://protfoilo-backend.vercel.app/projects"),
+        element: withLoading(About),
       },
       {
         path: "/contact",
-        element: <Contact></Contact>,
+        element: withLoading(Contact),
       },
       {
         path: "/add_project",
-        element: <Add_project></Add_project>,
+        element: withLoading(Add_project),
+      },
+      {
+        path: "/projects",
+        element: withLoading(Projects),
+        loader: () => fetch("https://protfoilo-backend.vercel.app/projects"),
       },
       {
         path: "/projects/:id",
-        element: <ProjectDetail></ProjectDetail>,
+        element: withLoading(ProjectDetail),
         loader: ({params}) => fetch(`https://protfoilo-backend.vercel.app/projects/${params.id}`)
       }
     ],
