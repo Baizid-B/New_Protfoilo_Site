@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import About_img from "../../assets/about_image/baizid.jpg"
 import { FaFacebook, FaFile, FaLinkedin } from "react-icons/fa6";
 import { FaHtml5 } from "react-icons/fa6";
-import { SiCss3 } from "react-icons/si";
+// import { SiCss3 } from "react-icons/si";
 import { FaJsSquare } from "react-icons/fa";
 import { RiTailwindCssFill } from "react-icons/ri";
 import { RiReactjsFill } from "react-icons/ri";
@@ -59,7 +59,7 @@ const About = () => {
                 <div className="w-full md:w-[67%] py-6 flex flex-row bg-[#161B22] rounded-xl md:rounded-lg ">
                     <Marquee>
                         <div className="text-3xl md:text-5xl px-8 text-[#D5FF3F]"><FaHtml5 /></div>
-                        <div className="text-3xl md:text-5xl px-8 text-[#D5FF3F]"><SiCss3 /></div>
+                        {/* <div className="text-3xl md:text-5xl px-8 text-[#D5FF3F]"><SiCss3 /></div> */}
                         <div className="text-3xl md:text-6xl px-8 text-[#D5FF3F]"><FaJsSquare /></div>
                         <div className="text-3xl md:text-6xl px-8 text-[#D5FF3F]"><RiTailwindCssFill /></div>
                         <div className="text-3xl md:text-6xl px-8 text-[#D5FF3F]"><RiReactjsFill /></div>
@@ -69,7 +69,7 @@ const About = () => {
                         <div className="text-3xl md:text-6xl px-8 text-[#D5FF3F]"><SiExpress /></div>
                         <div className="text-3xl md:text-6xl px-8 text-[#D5FF3F]"><FaGithub /></div>
                         <div className="text-3xl md:text-5xl px-8 text-[#D5FF3F]"><FaHtml5 /></div>
-                        <div className="text-3xl md:text-5xl px-8 text-[#D5FF3F]"><SiCss3 /></div>
+                        {/* <div className="text-3xl md:text-5xl px-8 text-[#D5FF3F]"><SiCss3 /></div> */}
                         <div className="text-3xl md:text-6xl px-8 text-[#D5FF3F]"><FaJsSquare /></div>
                         <div className="text-3xl md:text-6xl px-8 text-[#D5FF3F]"><RiTailwindCssFill /></div>
                         <div className="text-3xl md:text-6xl px-8 text-[#D5FF3F]"><RiReactjsFill /></div>
