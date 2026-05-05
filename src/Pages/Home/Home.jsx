@@ -158,44 +158,88 @@ const Home = () => {
             </div>
 
             {/* Home_project_section */}
-            <div className="flex flex-col gap-5 my-20">
-                {/* project details page button */}
-                <div className="flex flex-col md:flex-row md:items-center justify-between py-5 px-8 bg-[#161B22] rounded-xl">
-                    <h1 className="text-5xl font-humane">Recent Projects</h1>
-                    <Link to="/projects" className="flex flex-row items-center gap-2 text-lg font-sans">See all <span className="text-white"><FaArrowRight /></span></Link>
+            <div className="flex flex-col gap-6 my-20">
+                {/* Header Section - Clean and Modern */}
+                <div className="flex flex-col md:flex-row md:items-center justify-between py-4 px-6 bg-[#161B22] rounded-xl border border-gray-800 hover:border-[#D5FF3F]/30 transition-colors duration-300">
+                    <h1 className="text-4xl md:text-5xl font-humane text-[#D5FF3F]">
+                    Recent Projects
+                    </h1>
+                    <Link 
+                    to="/projects" 
+                    className="flex items-center gap-2 text-gray-300 hover:text-[#D5FF3F] transition-colors duration-300 font-sans text-lg group"
+                    >
+                    <span>See all</span>
+                    <span className="group-hover:translate-x-1 transition-transform duration-300">
+                        <FaArrowRight />
+                    </span>
+                    </Link>
                 </div>
 
-                {/* prject show card */}
+                {/* Project Cards Grid */}
                 <div>
-
-                   
-                   { 
-                       projectData && projectData.length > 0 ? (<div className="grid grid-cols-1 md:grid-cols-3 gap-5">{projectData.slice(0, 3).map( users => (
-                                <div className="bg-[#8B949E] p-2.5 md:p-5 rounded-2xl overflow-hidden">
-                                <div className="image-wrap">
-                                    <img className="rounded-xl" src={users.image} alt={users.name} />
-                                </div>
-
-                                <h1 className="uppercase font-bold text-2xl font-sans my-2">{users.name}</h1>
-
-                                <p className="capitalize font-sans">{users.shortDetail}</p>
-
-                                {/* More Images */}
-                                <div className="flex flex-row gap-5 overflow-hidden my-5">
-                                    {
-                                        users?.multiple?.map(img => (
-                                            <img className="w-16 h-16 object-cover rounded-2xl" key={img._id} src={img} alt={img.name} />
-                                        ))
-                                    }
-                                </div>
-
-                                <Link to={`/projects/${users._id}`} className="btn bg-[#242938] text-white rounded-lg py-2 px-5">View Details</Link>
+                    {projectData && projectData.length > 0 ? (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {projectData.slice(0, 3).map((users) => (
+                        <div 
+                            key={users._id} 
+                            className="group bg-[#161B22] p-4 rounded-2xl border border-gray-800 hover:border-[#D5FF3F]/40 hover:shadow-[0_8px_30px_rgba(213,255,63,0.1)] transition-all duration-300"
+                        >
+                            {/* Image Container with Hover Effect */}
+                            <div className="relative overflow-hidden rounded-xl mb-4">
+                            <img 
+                                className="w-full h-48 object-cover rounded-xl group-hover:scale-105 transition-transform duration-500" 
+                                src={users.image} 
+                                alt={users.name} 
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#161B22] to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
                             </div>
-                        ))} </div>) : (<p className="flex justify-center items-center p-5 text-xl font-semibold font-sans w-full">
-                            No data avabaliable
-                        </p>)
-                    }
 
+                            {/* Title */}
+                            <h1 className="uppercase font-bold text-xl text-[#D5FF3F] font-sans mb-1">
+                            {users.name}
+                            </h1>
+
+                            {/* Description */}
+                            <p className="capitalize font-sans text-gray-300 text-sm mb-3">
+                            {users.shortDetail}
+                            </p>
+
+                            {/* Screenshots (Optional) */}
+                            {users?.multiple && users.multiple.length > 0 && (
+                            <div className="flex flex-row gap-2 overflow-hidden mb-4">
+                                {users.multiple.slice(0, 3).map((img) => (
+                                <img 
+                                    className="w-14 h-14 object-cover rounded-lg border border-gray-700 group-hover:border-[#D5FF3F]/20 transition-colors duration-300" 
+                                    key={img._id} 
+                                    src={img} 
+                                    alt="screenshot" 
+                                />
+                                ))}
+                                {users.multiple.length > 3 && (
+                                <div className="w-14 h-14 rounded-lg bg-[#D5FF3F] text-[#161B22] flex items-center justify-center font-bold text-sm">
+                                    +{users.multiple.length - 3}
+                                </div>
+                                )}
+                            </div>
+                            )}
+
+                            {/* View Details Button */}
+                            <Link 
+                            to={`/projects/${users._id}`} 
+                            className="block w-full bg-[#D5FF3F] text-[#161B22] text-center font-semibold py-2 rounded-lg hover:bg-white hover:scale-[1.02] transition-all duration-300"
+                            >
+                            View Details
+                            </Link>
+                        </div>
+                        ))}
+                    </div>
+                    ) : (
+                    <div className="bg-[#161B22] p-10 rounded-xl border border-gray-800 text-center">
+                        <p className="text-gray-400 font-sans text-lg">
+                        No projects available yet. <span className="text-[#D5FF3F]">Stay tuned!</span>
+                        </p>
+                    </div>
+                    )}
                 </div>
             </div>
 
@@ -234,3 +278,5 @@ const Home = () => {
 };
 
 export default Home;
+
+

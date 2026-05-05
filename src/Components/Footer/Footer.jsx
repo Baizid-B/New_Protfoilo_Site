@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <>
             {/* Home_contact_section */}
-            <div className="w-11/12 mx-auto bg-[#161B22] flex flex-col md:flex-row justify-between items-top p-4 md:p-8 rounded-xl mt-5 gap-5 md:gap-0">
+            <div className="w-11/12 mx-auto bg-[#090909] flex flex-col md:flex-row justify-between items-top p-4 md:p-8 rounded-xl mt-5 gap-5 md:gap-0">
                 <Link to='/'>
                     <img className='w-30 md:w-40' src={logo} alt="Baizid Bostami Logo Image" />  
                 </Link>
