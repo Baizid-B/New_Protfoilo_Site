@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import Nav from "../Components/Header/Nav";
 import Footer from "../Components/Footer/Footer";
 import Loading from "../Components/Loading";
+import AIChatbot from "../Components/AI/ChatComponent";
+
 
 const Main = () => {
   const navigation = useNavigation();
@@ -31,6 +33,7 @@ const Main = () => {
         <div className="mx-auto px-2 md:px-6">
           <Nav />
           <Outlet />
+          <AIChatbot />
           <Footer />
         </div>
       </div>

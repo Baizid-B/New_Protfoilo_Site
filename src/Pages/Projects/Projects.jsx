@@ -15,10 +15,10 @@ const Projects = () => {
             <span className="w-2 h-2 rounded-full bg-[#D5FF3F] animate-pulse"></span>
             <span className="text-xs font-mono text-[#D5FF3F] tracking-wider">MY WORK</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          {/* <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Featured
             <span className="text-[#D5FF3F] block sm:inline sm:ml-3"> Projects</span>
-          </h2>
+          </h2> */}
           <p className="text-[#888888] max-w-2xl mx-auto">
             Here are some of my recent works that showcase my skills and creativity
           </p>

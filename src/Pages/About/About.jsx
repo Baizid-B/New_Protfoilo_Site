@@ -5,14 +5,9 @@ import { FaFacebook, FaFileDownload, FaLinkedin, FaHtml5, FaJs, FaNodeJs, FaGith
 import { RiTailwindCssFill, RiReactjsFill } from "react-icons/ri";
 import { SiFirebase, SiMongodb, SiExpress } from "react-icons/si";
 import { AiFillInstagram } from "react-icons/ai";
-import { useState, useEffect } from "react";
 
 const About = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
+  const isVisible = true;
 
   // Technology icons array for cleaner mapping
   const techIcons = [
@@ -37,10 +32,10 @@ const About = () => {
             <span className="w-2 h-2 rounded-full bg-[#D5FF3F] animate-pulse"></span>
             <span className="text-xs font-mono text-[#D5FF3F] tracking-wider">GET TO KNOW ME</span>
           </div>
-          <h1 className="text-4xl font-humane md:text-8xl font-bold text-white">
+          {/* <h1 className="text-4xl font-humane md:text-8xl font-bold text-white">
             About
             <span className="text-[#D5FF3F] block sm:inline sm:ml-3"> Me</span>
-          </h1>
+          </h1> */}
           <p className="text-[#888888] max-w-2xl mx-auto mt-4">
             Passionate developer creating amazing web experiences
           </p>

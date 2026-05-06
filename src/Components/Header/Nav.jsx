@@ -1,6 +1,6 @@
 import { NavLink } from "react-router";
 import { useState, useEffect } from "react";
-import { FaHome, FaUser, FaProjectDiagram, FaEnvelope, FaPlusCircle, FaBars, FaTimes } from "react-icons/fa";
+import { FaHome, FaUser, FaProjectDiagram, FaEnvelope, FaPlusCircle, FaBars, FaTimes, FaRobot } from "react-icons/fa";
 import logoImage from "../../assets/logo/Portfolio_logo.png";
 
 const Nav = () => {
