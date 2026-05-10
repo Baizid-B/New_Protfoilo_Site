@@ -16,12 +16,14 @@ const ChatComponent = () => {
   const chatEndRef = useRef(null);
   const recognitionRef = useRef(null);
 
+  // অটো স্ক্রল লজিক
   useEffect(() => {
     if (isOpen && !isMinimized) {
       chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }
   }, [chatHistory, loading, isOpen, isMinimized]);
 
+  // ভয়েস ইনপুট লজিক
   const startVoiceInput = () => {
     if (!window.webkitSpeechRecognition) {
       alert("Voice recognition is not supported in your browser");
@@ -47,25 +49,34 @@ const ChatComponent = () => {
     setIsListening(false);
   };
 
+  // মেসেজ পাঠানোর মেইন লজিক
   const handleSendMessage = async () => {
     if (!message.trim() || loading) return;
+
     const userMessage = { role: "user", text: message };
     setChatHistory((prev) => [...prev, userMessage]);
-    setLoading(true);
+    setLoading(true); // লোডিং শুরু
     const currentMessage = message;
     setMessage("");
+
     try {
-      const response = await fetch("http://localhost:5000/api/chat", {
+      const response = await fetch("https://protfoilo-backend.vercel.app/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: currentMessage }),
       });
       const data = await response.json();
-      setChatHistory((prev) => [...prev, { role: "ai", text: data.reply || "Sorry, no response." }]);
+      setChatHistory((prev) => [
+        ...prev,
+        { role: "ai", text: data.reply || "Sorry, no response." },
+      ]);
     } catch {
-      setChatHistory((prev) => [...prev, { role: "ai", text: "❌ Connection failed." }]);
+      setChatHistory((prev) => [
+        ...prev,
+        { role: "ai", text: "❌ Connection failed. Please try again." },
+      ]);
     } finally {
-      setLoading(false);
+      setLoading(false); // লোডিং শেষ
     }
   };
 
@@ -93,37 +104,28 @@ const ChatComponent = () => {
         <div className="fixed bottom-6 right-6 z-50 animate-slideUp">
           <div className={`bg-[#0a0c10] rounded-3xl shadow-2xl border border-white/10 flex flex-col transition-all duration-300 overflow-hidden ${isMinimized ? "w-[320px] h-16" : "w-[380px] h-[580px]"}`}>
             
-            {/* Fixed Header Alignment */}
-            <div className="bg-[#161b22] px-4 h-16 flex items-center justify-between border-b border-white/5 flex-nowrap">
-              <div className="flex items-center gap-3 min-w-0">
-                <div className="flex-shrink-0 w-10 h-10 bg-[#d5ff3f] rounded-full flex items-center justify-center shadow-lg">
+            {/* Header */}
+            <div className="bg-[#161b22] px-4 h-16 flex items-center justify-between border-b border-white/5">
+              <div className="flex items-center gap-3">
+                <div className="flex-shrink-0 w-10 h-10 bg-[#d5ff3f] rounded-full flex items-center justify-center">
                   <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
-                <div className="overflow-hidden">
-                  <h3 className="text-white font-bold text-xs sm:text-sm tracking-tight whitespace-nowrap">AI ASSISTANT</h3>
+                <div>
+                  <h3 className="text-white font-bold text-sm tracking-tight">AI ASSISTANT</h3>
                   <div className="flex items-center gap-1.5">
                     <span className="w-2 h-2 bg-[#d5ff3f] rounded-full animate-pulse"></span>
-                    <p className="text-gray-400 text-[9px] uppercase font-medium whitespace-nowrap">Online</p>
+                    <p className="text-gray-400 text-[9px] uppercase font-medium">Online</p>
                   </div>
                 </div>
               </div>
 
-              {/* Action Buttons */}
-              <div className="flex items-center gap-1 flex-shrink-0">
-                <button onClick={() => setIsMinimized(!isMinimized)} className="p-2 text-gray-400 hover:text-[#d5ff3f] transition">
-                  {isMinimized ? 
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" /></svg> : 
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" /></svg>
-                  }
+              <div className="flex items-center gap-1">
+                <button onClick={() => setIsMinimized(!isMinimized)} className="p-2 text-gray-400 hover:text-[#d5ff3f]">
+                  {isMinimized ? "◻️" : "—"}
                 </button>
-                {!isMinimized && (
-                   <button onClick={() => setChatHistory([{role: 'ai', text: 'Chat cleared!'}])} className="p-2 text-gray-400 hover:text-red-400 transition">
-                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-4v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
-                   </button>
-                )}
-                <button onClick={() => setIsOpen(false)} className="p-2 text-gray-400 hover:text-white transition">
+                <button onClick={() => setIsOpen(false)} className="p-2 text-gray-400 hover:text-red-500">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
                 </button>
               </div>
@@ -140,23 +142,61 @@ const ChatComponent = () => {
                       </div>
                     </div>
                   ))}
+                  
+                  {/* Loading Typing Animation */}
+                  {loading && (
+                    <div className="flex justify-start">
+                      <div className="bg-[#1c2128] text-gray-400 px-4 py-3 rounded-2xl text-xs flex items-center gap-2">
+                        <span className="flex gap-1">
+                          <span className="w-1.5 h-1.5 bg-gray-500 rounded-full animate-bounce"></span>
+                          <span className="w-1.5 h-1.5 bg-gray-500 rounded-full animate-bounce [animation-delay:0.2s]"></span>
+                          <span className="w-1.5 h-1.5 bg-gray-500 rounded-full animate-bounce [animation-delay:0.4s]"></span>
+                        </span>
+                        AI is typing...
+                      </div>
+                    </div>
+                  )}
                   <div ref={chatEndRef} />
                 </div>
+
+                {/* Input Field Area */}
                 <div className="p-4 bg-[#161b22] border-t border-white/5">
-                   {/* Input logic here same as before */}
-                   <div className="flex gap-2 items-center bg-[#0a0c10] rounded-2xl p-1.5 border border-white/10">
+                  <div className="flex gap-2 items-center bg-[#0a0c10] rounded-2xl p-1.5 border border-white/10 focus-within:border-[#d5ff3f]/50 transition-all">
                     <input
                       type="text"
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
+                      // সমাধান ১: এন্টার বাটনে মেসেজ পাঠানো
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") handleSendMessage();
+                      }}
                       placeholder="Type a message..."
                       className="flex-1 bg-transparent text-white px-3 py-2 outline-none text-sm"
                     />
-                    <button onClick={isListening ? stopVoiceInput : startVoiceInput} className={`p-2.5 rounded-xl transition-all ${isListening ? "bg-red-500 text-white" : "bg-gray-600 text-white hover:scale-105"}`}>
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a8 8 0 01-8 8m0 0-4-4m4 4l4-4m-4-12a8 8 0 018 8v4l4 4m-12 0H7a2 2 0 01-2-2V7a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2z" /></svg>
+                    
+                    {/* ভয়েস বাটন */}
+                    <button 
+                      onClick={isListening ? stopVoiceInput : startVoiceInput} 
+                      className={`p-2.5 rounded-xl transition-all ${isListening ? "bg-red-500 text-white animate-pulse" : "bg-gray-700 text-gray-300 hover:text-white"}`}
+                    >
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a8 8 0 01-8 8m0 0-4-4m4 4l4-4m-4-12a8 8 0 018 8v4l4 4m-12 0H7a2 2 0 01-2-2V7a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2z" />
+                      </svg>
                     </button>
-                    <button onClick={handleSendMessage} className="bg-[#d5ff3f] p-2.5 rounded-xl text-black hover:scale-105 transition-all">
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+
+                    {/* সেন্ড বাটন */}
+                    <button 
+                      onClick={handleSendMessage} 
+                      disabled={loading || !message.trim()}
+                      className={`p-2.5 rounded-xl transition-all ${loading || !message.trim() ? "bg-gray-800 text-gray-500" : "bg-[#d5ff3f] text-black hover:scale-105 active:scale-95"}`}
+                    >
+                      {loading ? (
+                        <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+                      ) : (
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      )}
                     </button>
                   </div>
                 </div>
