@@ -53,7 +53,10 @@ export const router = createBrowserRouter([
       {
         path: "/projects/:id",
         element: withLoading(ProjectDetail),
-        loader: ({params}) => fetch(`https://protfoilo-backend.vercel.app/projects/${params.id}`)
+        loader: async ({ params }) => {
+          const res = await fetch(`https://protfoilo-backend.vercel.app/projects/${params.id}`);
+          return res.json();
+        }
       }
     ],
   },
