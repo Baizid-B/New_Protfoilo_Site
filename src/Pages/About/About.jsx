@@ -98,7 +98,7 @@ const About = () => {
                 {/* Download Resume Button */}
                 <div className="pt-4">
                   <a 
-                    href="/Md.Baizid Bostami Professional New Cv.pdf" 
+                    href="/Md.Baizid Bostami Professional New Cv (2).pdf" 
                     download 
                     className="group relative inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-transparent border-2 border-[#D5FF3F] text-[#D5FF3F] font-semibold overflow-hidden transition-all duration-300 hover:text-black hover:border-[#D5FF3F]"
                   >
